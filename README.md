@@ -2,6 +2,13 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+[![CI](https://github.com/mehrshud/omnilertlab/actions/workflows/ci.yml/badge.svg)](https://github.com/mehrshud/omnilertlab/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/language-TypeScript-blue)]()
+[![Stars](https://img.shields.io/github/stars/mehrshud/omnilertlab?style=social)](https://github.com/mehrshud/omnilertlab)
+
+
+
 First, run the development server:
 
 ```bash
