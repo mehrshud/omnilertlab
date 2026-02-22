@@ -1,43 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Omnilert Lab
 
-## Getting Started
+## Table of Contents
 
-[![CI](https://github.com/mehrshud/omnilertlab/actions/workflows/ci.yml/badge.svg)](https://github.com/mehrshud/omnilertlab/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/language-TypeScript-blue)]()
-[![Stars](https://img.shields.io/github/stars/mehrshud/omnilertlab?style=social)](https://github.com/mehrshud/omnilertlab)
+* [Overview](#overview)
+* [Usage Examples](#usage-examples)
+* [Getting Started](#getting-started)
 
+## Overview
+Omnilert Lab is a project built with TypeScript and Node.js.
 
+## Usage Examples
 
-First, run the development server:
+### Basic Usage
+```typescript
+// Import the necessary modules
+import { exampleFunction } from './example_module';
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+// Use the function
+exampleFunction();
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Advanced Usage
+```typescript
+// Import the necessary modules
+import { advancedFunction } from './advanced_module';
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+// Use the function with options
+advancedFunction({ option1: 'value1', option2: 'value2' });
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Getting Started
+To get started with Omnilert Lab, follow these steps:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Install the dependencies: `npm install`
+2. Build the project: `npm run build`
+3. Start the project: `npm run start`
