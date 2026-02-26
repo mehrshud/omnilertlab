@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Custom Properties ─── */
+:root {
+  --font-display: "Bebas Neue", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-accent: #7b61ff;
+  --color-accent-glow: rgba(123, 97, 255, 0.35);
+  --color-bg: #06060e;
+  --color-bg-2: #0c0c1a;
+  --color-surface: rgba(255 255 255 / 0.04);
+  --color-border: rgba(255 255 255 / 0.08);
+  --color-text: #e8e8f0;
+  --color-muted: rgba(232 232 240 / 0.45);
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --cursor-size: 12px;
+  --cursor-size-hover: 48px;
+
+  --grid: 8px;
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: auto; overscroll-behavior: none; }
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none; /* replaced by custom cursor */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide native cursor everywhere */
+*, a, button, [role="button"] { cursor: none !important; }
+
+/* ─── Skip Link ─── */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: var(--grid);
+  z-index: 9999;
+  padding: 8px 16px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: var(--grid); }
+
+/* ─── Selection ─── */
+::selection { background: var(--color-accent); color: #fff; }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 2px; }
+
+/* ─── Glass Card ─── */
+.glass {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+/* ─── Grain Overlay ─── */
+.grain-overlay {
+  position: fixed;
+  inset: -200%;
+  width: 400%;
+  height: 400%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 9998;
+  animation: grain 0.4s steps(1) infinite;
+  will-change: transform;
+}
+
+/* ─── Section Defaults ─── */
+section { position: relative; }
+
+/* ─── Type Scale ─── */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 11rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 7rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.body-sm { font-size: 13px; color: var(--color-muted); }
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ─── Magnetic Button ─── */
+.magnetic-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  backdrop-filter: blur(12px);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  will-change: transform;
+}
+.magnetic-btn:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 24px var(--color-accent-glow);
+}
+.magnetic-btn.primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* ─── Split Text (hidden until animated) ─── */
+.split-text .char {
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* ─── Horizontal Scroll Track ─── */
+.h-scroll-track {
+  display: flex;
+  gap: 24px;
+  will-change: transform;
+}
+
+/* ─── Terminal cursor blink ─── */
+@keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0 } }
+.terminal-cursor { animation: blink 1s step-end infinite; }
+
+/* ─── Accent glow text ─── */
+.glow-text { text-shadow: 0 0 40px var(--color-accent-glow); }
+
+/* ─── Noise progress bar ─── */
+.progress-bar {
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-glow));
+  box-shadow: 0 0 12px var(--color-accent-glow);
+  transform-origin: left;
+}
+
+/* ─── Reduced Motion Fallback ─── */
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay { animation: none; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ─── Light mode (minimal, opt-in) ─── */
+.light {
+  --color-bg: #f4f4f8;
+  --color-bg-2: #ebebf2;
+  --color-text: #111118;
+  --color-muted: rgba(17 17 24 / 0.5);
+  --color-surface: rgba(0 0 0 / 0.03);
+  --color-border: rgba(0 0 0 / 0.08);
+}
